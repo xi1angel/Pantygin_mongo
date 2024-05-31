@@ -2,13 +2,9 @@ from pymongo import MongoClient
 from datetime import datetime, timedelta
 import random
 
-# Подключение к MongoDB
 client = MongoClient('mongodb://localhost:27017/')
 db = client['Pantygin_RGR']
 
-# Внесение данных
-
-# 1. Данные о направлениях
 majors = [
     {"Название": "Информатика и информационные технологии"},
     {"Название": "Фундаметальная математика"},
@@ -17,7 +13,6 @@ majors = [
 
 major_ids = db.majors.insert_many(majors).inserted_ids
 
-# 2. Данные о группах
 groups = [
     {"Номер группы": "ИН101", "Направление": major_ids[0]},
     {"Номер группы": "ИН102", "Направление": major_ids[0]},
@@ -32,7 +27,6 @@ groups = [
 
 group_ids = db.groups.insert_many(groups).inserted_ids
 
-# 3. Данные о студентах
 import datetime
 
 students = [
@@ -113,7 +107,6 @@ students = [
 
 student_ids = db.students.insert_many(students).inserted_ids
 
-# 4. Данные о преподавателях и предметах
 teachers = [
     {"ФИО": "Иванов Иван Петрович"},
     {"ФИО": "Петров Петр Иванович"},
@@ -136,7 +129,6 @@ subjects = [
 
 subject_ids = db.subjects.insert_many(subjects).inserted_ids
 
-# 5. Данные об оценках
 grades = [
     {"Студент": student_ids[0], "Предмет": subject_ids[0], "Оценка": 5},
     {"Студент": student_ids[1], "Предмет": subject_ids[0], "Оценка": 4},
@@ -186,7 +178,6 @@ grades = [
 
 grages_ids = db.grades.insert_many(grades)
 
-# 6. Данные о расписании
 schedules = [
     {"Номер пары": 1, "Время начала": "08:00", "Время окончания": "09:30"},
     {"Номер пары": 2, "Время начала": "09:40", "Время окончания": "11:10"},
@@ -198,7 +189,6 @@ schedules = [
 
 schedule_ids = db.schedule.insert_many(schedules).inserted_ids
 
-# 7. Данные о посещениях студентов
 def generate_attendances():
     attendances = []
     for student in student_ids:
