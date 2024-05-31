@@ -6,9 +6,9 @@ client = MongoClient('mongodb://localhost:27017/')
 db = client['Pantygin_RGR']
 
 majors = [
-    {"Название": "Информатика и информационные технологии"},
-    {"Название": "Фундаметальная математика"},
-    {"Название": "Физика квантовых систем"}
+    {"Название": "Информатика"},
+    {"Название": "Математика"},
+    {"Название": "Физика"}
 ]
 
 major_ids = db.majors.insert_many(majors).inserted_ids
@@ -176,7 +176,7 @@ grades = [
     {"Студент": student_ids[43], "Предмет": subject_ids[2], "Оценка": 3}
 ]
 
-grages_ids = db.grades.insert_many(grades)
+db.grades.insert_many(grades)
 
 schedules = [
     {"Номер пары": 1, "Время начала": "08:00", "Время окончания": "09:30"},
