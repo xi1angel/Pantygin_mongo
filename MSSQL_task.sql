@@ -201,21 +201,6 @@ GROUP BY
     sub.SubjectName;
 
 
--- 7.3
-SELECT 
-    sub.SubjectName,
-    COUNT(*) AS [Количество пропущенных занятий]
-FROM 
-    Attendance a
-    JOIN Schedules s ON a.ScheduleID = s.ScheduleID
-    JOIN Subjects sub ON s.SubjectID = sub.SubjectID
-WHERE
-    sub.SubjectName = 'Programming'
-    AND a.Attended = 0
-GROUP BY
-    sub.SubjectName;
-
-
 -- 7.4
 SELECT 
     a.StudentID,
